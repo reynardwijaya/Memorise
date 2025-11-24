@@ -9,4 +9,5 @@ sealed class AppRoute(val route: String) {
     data object Onboarding5 : AppRoute("onboarding5")
     data object SignIn : AppRoute("signin")
     data object SignUp : AppRoute("signup")
+    data object ResetPassword : AppRoute("resetpw")
 }

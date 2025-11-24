@@ -8,6 +8,8 @@ import com.example.memorise.ui.screen.landing.LandingScreen
 import com.example.memorise.ui.screen.onboarding.*
 import com.example.memorise.ui.screen.sigin.SignInScreen
 import com.example.memorise.ui.screen.signup.SignUpScreen
+import com.example.memorise.ui.screen.passwordd.ResetPwScreen
+
 
 @Composable
 fun AppNavGraph(navController: NavHostController) {
@@ -28,28 +30,28 @@ fun AppNavGraph(navController: NavHostController) {
         composable("Onboarding1") {
             OnboardingScreen1(
                 onNext = { navController.navigate("Onboarding2") },
-                onSkip = { navController.navigate("signin") }
+                onSkip = { navController.navigate("Onboarding5") }
             )
         }
 
         composable("Onboarding2") {
             OnboardingScreen2(
                 onNext = { navController.navigate("onboarding3") },
-                onSkip = { navController.navigate("signin") }
+                onSkip = { navController.navigate("Onboarding5") }
             )
         }
 
         composable("onboarding3") {
             OnboardingScreen3(
                 onNext = { navController.navigate("onboarding4") },
-                onSkip = { navController.navigate("signin") }
+                onSkip = { navController.navigate("Onboarding5") }
             )
         }
 
         composable("onboarding4") {
             OnboardingScreen4(
                 onNext = { navController.navigate("Onboarding5") },
-                onSkip = { navController.navigate("signin") }
+                onSkip = { navController.navigate("Onboarding5") }
             )
         }
 
@@ -62,13 +64,21 @@ fun AppNavGraph(navController: NavHostController) {
 
         composable("signin") {
             SignInScreen(
-                onSignInSuccess = { navController.navigate("home") }
+                onSignInSuccess = { navController.navigate("home") },
+                onSignUpClick = { navController.navigate("signup") },
+                onForgotPasswordClick = { navController.navigate("resetpw") }
             )
         }
 
         composable("signup") {
             SignUpScreen(
                 onLoginClick = { navController.navigate("signin") }
+            )
+        }
+
+        composable("resetpw") {
+            ResetPwScreen(
+                onBackClick = { navController.popBackStack() }
             )
         }
     }
